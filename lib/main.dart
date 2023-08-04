@@ -9,6 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:simple_dictionary/Screens/homescreen.dart';
+import 'package:simple_dictionary/utils/constants.dart';
 import 'AdHelper/adshelper.dart';
 
 
@@ -193,31 +194,12 @@ class _SplashScreenState extends State<IntroSplashScreen> {
         body: Container(
           child: Stack(
             children: [
-             Container(child: Text("Simple Dictionary"),),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.5),
-                        spreadRadius: 8,
-                        blurRadius: 7,
-                        offset: Offset(0, 3), // changes position of shadow
-                      ),
-                    ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                        "Designed & Developed By - Darshan Komu",
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.aBeeZee(textStyle: TextStyle(fontSize: 14,color: Colors.white,fontWeight: FontWeight.w600,))
+              Center(
+                child: Text(
+                    "Dictionary",
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.merriweather(textStyle: TextStyle(fontSize: 50,color: Colors.black,fontWeight: FontWeight.w600,))
 
-                    ),
-                  ),
                 ),
               ),
 

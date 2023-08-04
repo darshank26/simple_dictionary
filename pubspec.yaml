@@ -28,6 +28,24 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  sqflite:
+  path_provider:
+  shared_preferences: ^2.0.0
+  google_fonts: ^4.0.4
+  onesignal_flutter: ^3.0.0-beta3
+  firebase_auth: ^4.2.10
+  firebase_core: ^2.7.1
+  fluttertoast: ^8.0.6
+  launch_review: ^3.0.1
+  share: ^2.0.1
+  google_mobile_ads: ^1.0.1
+  url_launcher: ^6.0.18
+  firebase_core_platform_interface: 4.5.3
+  get: ^4.6.5
+  math_expressions: ^2.3.1
+  dotted_border: ^2.0.0+3
+  toggle_switch: ^2.0.1
+  page_transition: ^2.0.4
   flutter:
     sdk: flutter
 

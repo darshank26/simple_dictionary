@@ -195,11 +195,20 @@ class _SplashScreenState extends State<IntroSplashScreen> {
           child: Stack(
             children: [
               Center(
-                child: Text(
-                    "Dictionary",
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.merriweather(textStyle: TextStyle(fontSize: 50,color: Colors.black,fontWeight: FontWeight.w600,))
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                        "Dictionary",
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.merriweather(textStyle: TextStyle(fontSize: 50,color: Colors.black,fontWeight: FontWeight.w600,))
 
+                    ),
+                    SizedBox(height: 150.0,),
+                    Center(child: CircularProgressIndicator(color: ksecondcolor,))
+
+                  ],
                 ),
               ),
 

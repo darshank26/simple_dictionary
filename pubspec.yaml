@@ -46,6 +46,7 @@ dependencies:
   dotted_border: ^2.0.0+3
   toggle_switch: ^2.0.1
   page_transition: ^2.0.4
+  http: any
   flutter:
     sdk: flutter
 

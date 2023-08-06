@@ -3,6 +3,8 @@ import 'dart:ui';
 const kprimarycolor = Color(0xff252525);
 const ksecondcolor = Color(0xff151515);
 const kthirdcolor = Color(0xff6c6c6c);
+const ktextcolor = Color(0xff0786f8);
+
 
 
 var androidAppShareLink = "https://play.google.com/store/apps/details?id=com.darshankomu.simple_dictionary";

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:simple_dictionary/Screens/meaningscreen.dart';
 import 'package:simple_dictionary/model/model.dart';
 import 'package:simple_dictionary/utils/constants.dart';
 import 'package:http/http.dart' as http;
@@ -85,7 +86,11 @@ class _homescreenState extends State<homescreen> {
                       borderRadius: BorderRadius.circular(10), // Rounded corners
                     ),
                 ),
-                onPressed: fetchData,
+                onPressed: ()
+                      {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => MeaningScreen()));
+
+                      },
                       child:Text(
                           "Search..",
                           textAlign: TextAlign.center,
@@ -115,11 +120,11 @@ class _homescreenState extends State<homescreen> {
                     child: Lottie.asset('assets/empty.json',width: 300.0,height: 350.0)),
               ),
 
-              Center(
-                child: ( data.word.toString() == '')
-                    ? Text('Enter a word and press "Get Definition"')
-                    : Text(data.word.toString()),
-              ),
+              // Center(
+              //   child: ( data.word.toString() == '')
+              //       ? Text('Enter a word and press "Get Definition"')
+              //       : Text(data.meanings![0].definitions![0].definition.toString()),
+              // ),
 
 
             ],
@@ -145,6 +150,7 @@ class _homescreenState extends State<homescreen> {
         if (responseData.isNotEmpty) {
           setState(() {
             data = DictionaryModel.fromJson(responseData[0]);
+
           });
         }
       });

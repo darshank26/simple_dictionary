@@ -18,19 +18,6 @@ class homescreen extends StatefulWidget {
 class _homescreenState extends State<homescreen> {
 
   TextEditingController _wordController = TextEditingController();
-  DictionaryModel data = DictionaryModel();
-
-  @override
-  void initState() {
-    super.initState();
-
-  }
-
-  @override
-  void dispose() {
-    _wordController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,9 +75,18 @@ class _homescreenState extends State<homescreen> {
                 ),
                 onPressed: ()
                       {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => MeaningScreen()));
 
-                      },
+                        if(_wordController.text.isEmpty)
+                          {
+                            _showAlertDialog(context);
+                          }
+                        else
+                          {
+                            print("---------"+_wordController.text.toString());
+                            String w = _wordController.text.toString();
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => MeaningScreen( wordd: w )));
+                          }
+                        },
                       child:Text(
                           "Search..",
                           textAlign: TextAlign.center,
@@ -119,14 +115,6 @@ class _homescreenState extends State<homescreen> {
                     alignment: Alignment.bottomCenter,
                     child: Lottie.asset('assets/empty.json',width: 300.0,height: 350.0)),
               ),
-
-              // Center(
-              //   child: ( data.word.toString() == '')
-              //       ? Text('Enter a word and press "Get Definition"')
-              //       : Text(data.meanings![0].definitions![0].definition.toString()),
-              // ),
-
-
             ],
           ),
         ),
@@ -135,28 +123,32 @@ class _homescreenState extends State<homescreen> {
   }
 
 
-
-  Future<void> fetchData() async {
-    String word = _wordController.text;
-
-    final response = await http.get(
-      Uri.parse('https://api.dictionaryapi.dev/api/v2/entries/en/$word'),
+  void _showAlertDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => Container(
+        width: 400, // Adjust the width as needed
+        height: 300,
+        child: CupertinoAlertDialog(
+          title: Text('Simple Dictionary Say\'s'),
+          content: Text('Please enter some word to search it\'s meaning'),
+          actions: <Widget>[
+            CupertinoDialogAction(
+              child: Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            CupertinoDialogAction(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        ),
+      ),
     );
-
-    if (response.statusCode == 200) {
-      setState(() {
-
-        List<dynamic> responseData = json.decode(response.body);
-        if (responseData.isNotEmpty) {
-          setState(() {
-            data = DictionaryModel.fromJson(responseData[0]);
-
-          });
-        }
-      });
-    } else {
-      // If that call was not successful, throw an error.
-      throw Exception('Failed to load data');
-    }
   }
+
 }
